@@ -2,15 +2,14 @@ import React from "react";
 
 const Blog = () => {
   return (
-    <div>
-      <div>
-        <h2>
+    <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5">
+      <div className="border-4 ">
+        <h2 className="text-2xl">
           Q.1 What are the different ways to manage a state in a React
           application?
         </h2>
         <p>
-          What is state management in Reactjs? What are the different ways to
-          manage a state in a React application? এর ছবির ফলাফল State represents
+          State represents
           the value of a dynamic properties of a React component at a given
           instance. React provides a dynamic data store for each component. The
           internal data represents the state of a React component and can be
@@ -21,8 +20,8 @@ const Blog = () => {
           learn React in the future.
         </p>
       </div>
-      <div>
-        <h2>Q.2 How does prototypical inheritance work?</h2>
+      <div className="border-4 ">
+        <h2 className="text-2xl">Q.2 How does prototypical inheritance work?</h2>
         <p>
           Prototypical inheritance allows us to reuse the properties or methods
           from one JavaScript object to another through a reference pointer
@@ -35,8 +34,8 @@ const Blog = () => {
           Object.
         </p>
       </div>
-      <div>
-        <h2>Q.3 What is a unit test? Why should we write unit tests?</h2>
+      <div className="border-4 ">
+        <h2 className="text-2xl">Q.3 What is a unit test? Why should we write unit tests?</h2>
         <p>
           A unit test is a way of testing a unit - the smallest piece of code
           that can be logically isolated in a system. In most programming
@@ -51,18 +50,18 @@ const Blog = () => {
           that your function is too complex.
         </p>
       </div>
-      <div>
-        <h2>Q.4 React vs. Angular vs. Vue?</h2>
+      <div className="border-4 ">
+        <h2 className="text-2xl">Q.4 React vs. Angular vs. Vue?</h2>
         <p>
           
-          <h3> React </h3> React, interestingly, combines the UI and behavior of
+          <h3 className="text-2xl"> React </h3> React, interestingly, combines the UI and behavior of
           components. For instance, here is the code to create a hello world
           component in React. In React, the same part of the code is responsible
           for creating a UI element and dictating its behavior.
         </p>
         <p>
         
-          <h3>Angular </h3>In Angular, components are referred to as directives.
+          <h3 className="text-2xl">Angular </h3>In Angular, components are referred to as directives.
           Directives are just markers on DOM elements, which Angular can track
           and attach specific behavior too. Therefore, Angular separates the UI
           part of components as attributes of HTML tags, and their behaviors in
@@ -70,7 +69,7 @@ const Blog = () => {
           at Angular vs React.
         </p>
         <p>
-          <h3> Vue </h3>When looking into Vue vs React, in Vue, UI and behavior are also
+          <h3 className="text-2xl"> Vue </h3>When looking into Vue vs React, in Vue, UI and behavior are also
           a part of components, which makes things more intuitive. Also, Vue is
           highly customizable, which allows you to combine the UI and behavior
           of components from within a script. Further, you can also use
