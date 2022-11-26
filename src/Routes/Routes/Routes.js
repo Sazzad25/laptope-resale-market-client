@@ -6,6 +6,7 @@ import DisplayError from "../../pages/DisplayError/DisplayError";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
 import SignUp from "../../pages/SignUp/SignUp";
+import SingleCard from "../../pages/SingleCard/SingleCard";
 
 export const router = createBrowserRouter([
     {
@@ -32,6 +33,13 @@ export const router = createBrowserRouter([
                 path: '/login',
                 element: <Login></Login>
             },
+
+            {
+                path: '/category',
+                element: <SingleCard></SingleCard>,
+                loader: () => fetch('http://localhost:5000/product'),
+            },
+
         ]
     },
     {

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import CategoryName from './CategoryName';
 
 const Category = () => {
-    const [services, setServices] = useState([]);
+    // const [services, setServices] = useState([]);
+    const [categories, setCategories] = useState([]);
     useEffect( () =>{
         fetch('http://localhost:5000/category')
         .then(res => res.json())
-        .then(data => setServices(data))
+        .then(data => setCategories(data))
     }, [])
     return (
         <div>
@@ -17,14 +19,12 @@ const Category = () => {
                 
             </div>
             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-                <h2>Total: {services.length}</h2>
-              
+            <h2>All Category: {categories.length}</h2>
+            <div>
                 {
-                   services.map(service => <CategoryName
-                    key={service._id}
-                    service={service}
-                    ></CategoryName>)
+                    categories.map(category => <p key={category.id}><Link to="/category">{category.name} </Link> </p>)
                 }
+            </div>
           
             </div>
    
