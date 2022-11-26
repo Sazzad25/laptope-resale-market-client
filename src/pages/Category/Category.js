@@ -18,9 +18,9 @@ const Category = () => {
                 <h2 className='text-5xl font-semibold'>Our Second Hand Categories</h2>
                 
             </div>
-            <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-            <h2>All Category: {categories.length}</h2>
-            <div>
+            <div >
+            {/* <h2>All Category: {categories.length}</h2> */}
+            <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-2xl text-primary'>
                 {
                     categories.map(category => <p key={category.id}><Link to="/category">{category.name} </Link> </p>)
                 }

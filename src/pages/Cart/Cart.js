@@ -64,7 +64,7 @@ const Cart = ({ topics }) => {
         <h3 className="text-1xl">Posted Date: {posted_date}</h3>
         <h3 className="text-1xl">Seller's Name: {sellers_name}</h3>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <button className="btn btn-primary">Book Now</button>
         </div>
       </div>
     </div>
