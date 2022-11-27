@@ -24,6 +24,7 @@ const SingleCard = () => {
         product &&
         <BookingModal
          product={product}
+         setProduct={setProduct}
          ></BookingModal>}
         </section>
     );
