@@ -1,28 +1,49 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../contexts/AuthProvider";
+
+
 
 const BookingModal = ({product, setProduct}) => {
-    const {title} = product;
+    const {title, resale_price} = product;
+    const {user} = useContext(AuthContext);
 
     const handleBooking = event =>{
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
-        const price = form.price.value;
         const phone = form.phone.value;
         const location = form.location.value;
        
         const booking = {
           
-            product: name,
-            seller: name,
+            // product: name,
+            title,
+            buyer: name,
             location,
             email,
             phone,
-            price
+            resale_price
+           
         }
-        console.log(booking);
-        setProduct(null);
+        
+        fetch('http://localhost:5000/bookings', {
+          method: "POST",
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(booking)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          if (data.acknowledged) {
+            setProduct(null);
+            toast.success('Your Booking Confirm')
+          }
+        })
+       
     }
   return (
     <>
@@ -39,10 +60,17 @@ const BookingModal = ({product, setProduct}) => {
             {title}
           </h3>
           <form onSubmit={handleBooking} className="grid grid-cols-1 gap-3 mt-10">
-          <input name="name" type="text" placeholder="Your Name" className="input w-full input-bordered" />
-          <input name="email" type="email" placeholder="Email" className="input w-full input-bordered" />
-          <input name="price" type="text" placeholder="Price" className="input w-full input-bordered" />
-          <input name="phone" type="text" placeholder="Phone Number" className="input w-full max-w-xs" />
+          <input name="name" type="text"
+              defaultValue={user?.displayName}
+              disabled placeholder="Your Name" className="input w-full input-bordered" />
+          <input name="email" type="email"
+               defaultValue={user?.email}
+               disabled
+              placeholder="Email" className="input w-full input-bordered" />
+              <h3 className="text-lg font-bold">
+              Resale Price: {resale_price}
+              </h3>
+          <input name="phone" type="text" placeholder="Phone Number" className="input w-full max-w-xs input-bordered" />
           <input name="location" type="text" placeholder="Meeting Location" className="input w-full input-bordered" />
          
           <br />

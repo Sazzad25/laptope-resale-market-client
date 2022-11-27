@@ -27,15 +27,14 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         toast("register success");
-        navigate("/");
         const userInfo = {
           displayName: data.name,
         };
-        // updateUser(userInfo)
-        // .then(() =>{
-        //     saveUser(data.name, data.email);
-        // })
-        // .catch(err => console.log(err));
+        updateUser(userInfo)
+        .then(() =>{
+          navigate("/");
+        })
+        .catch(err => console.log(err));
       })
       .catch((err) => {
         console.log(err);
