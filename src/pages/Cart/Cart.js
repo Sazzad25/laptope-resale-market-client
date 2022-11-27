@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // details description of courses
-const Cart = ({ topics }) => {
+const Cart = ({ topics, setProduct }) => {
   const { title, image_url, total_view, rating, location, original_price, resale_price, uses_time, posted_date, sellers_name } = topics;
   return (
     //     <div className="card w-96 bg-base-100 shadow-xl">
@@ -64,7 +64,11 @@ const Cart = ({ topics }) => {
         <h3 className="text-1xl">Posted Date: {posted_date}</h3>
         <h3 className="text-1xl">Seller's Name: {sellers_name}</h3>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Book Now</button>
+          
+          <label 
+          htmlFor="booking-modal" className="btn  btn-primary text-white"
+          onClick={() =>setProduct(topics)}
+          >Book Now</label>
         </div>
       </div>
     </div>
