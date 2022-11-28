@@ -24,7 +24,7 @@ const AddProduct = () => {
             purchase: data.purchase
         }
 
-        fetch('http://localhost:5000/addproduct', {
+        fetch('https://laptope-resale-market-server.vercel.app/addproduct', {
             method: 'POST',
             headers: {
               'content-type': 'application/json',

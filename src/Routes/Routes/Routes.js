@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
             {
                 path: '/category',
                 element: <PrivateRoute><SingleCard></SingleCard></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/product'),
+                loader: () => fetch('https://laptope-resale-market-server.vercel.app/product'),
             },
 
         ]
@@ -83,7 +83,7 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <AdminRoute><Payment></Payment></AdminRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                loader: ({params}) => fetch(`https://laptope-resale-market-server.vercel.app/bookings/${params.id}`)
             }
         ]
     }

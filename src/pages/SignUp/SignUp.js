@@ -46,7 +46,7 @@ const SignUp = () => {
 
   const saveUser = (name, email) =>{
     const user = {name, email};
-    fetch('http://localhost:5000/buyers', {
+    fetch('https://laptope-resale-market-server.vercel.app/buyers', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
