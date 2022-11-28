@@ -1,7 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddProduct from "../../Dashboard/AddProduct";
 import AllBuyers from "../../Dashboard/AllBuyers";
 import AllSellers from "../../Dashboard/AllSellers";
 import MyOrders from "../../Dashboard/MyOrders";
+import MyProducts from "../../Dashboard/MyProducts";
+import Payment from "../../Dashboard/Payment";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import Blog from "../../pages/Blog/Blog";
@@ -10,6 +13,7 @@ import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
 import SignUp from "../../pages/SignUp/SignUp";
 import SingleCard from "../../pages/SingleCard/SingleCard";
+import AdminRoute from "../PrivateRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -58,12 +62,28 @@ export const router = createBrowserRouter([
 
             {
                 path: '/dashboard/buyers',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
 
             {
                 path: '/dashboard/sellers',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
+            },
+
+            {
+                path: '/dashboard/addproduct',
+                element: <AdminRoute><AddProduct></AddProduct></AdminRoute>
+            },
+
+            {
+                path: '/dashboard/myproducts',
+                element: <AdminRoute><MyProducts></MyProducts></AdminRoute>
+            },
+
+            {
+                path: '/dashboard/payment/:id',
+                element: <AdminRoute><Payment></Payment></AdminRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
             }
         ]
     }

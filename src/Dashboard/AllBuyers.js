@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const AllBuyers = () => {
     const {data: buyers = [], refetch} = useQuery({
@@ -10,6 +11,23 @@ const AllBuyers = () => {
             return data;
         }
     })
+
+    const handleMakeAdmin = id => {
+      fetch(`http://localhost:5000/buyers/admin/${id}`, {
+        method: 'PUT',
+        headers: {
+          authorization: `bearer ${localStorage.getItem('accessToken')}`
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.modifiedCount > 0){
+          toast.success('Make admin successfully')
+          refetch();
+        }
+      })
+    }
+
     return (
         <div>
             <h2 className='text-3xl'>All Buyers</h2>
@@ -21,8 +39,8 @@ const AllBuyers = () => {
         <th></th>
         <th>Name</th>
         <th>Email</th>
-        <th>Favorite Color</th>
-        <th>Favorite Color</th>
+        <th>Admin</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -32,8 +50,8 @@ const AllBuyers = () => {
         <th>{i+1}</th>
         <td>{buyer.name}</td>
         <td>{buyer.email}</td>
-        <td>Blue</td>
-        <td>Blue</td>
+        <td>{ buyer?.role !== 'admin' && <button onClick={() => handleMakeAdmin(buyer._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
+        <td><button className='btn btn-xs btn-danger'>Delete</button></td>
       </tr>
         )
       }

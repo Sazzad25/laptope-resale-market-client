@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+
 import useToken from "../../hooks/useToken";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
 
@@ -26,7 +28,7 @@ const Login = () => {
     .then(result =>{
       const user = result.user;
       setLoginUserEmail(data.email);
-      // navigate(from, {replace: true});
+     
     })
   .catch(err => {
     console.log(err.message)
@@ -61,17 +63,14 @@ const Login = () => {
               minLength: {value: 6, message: "Password must  6 or longer than"}
             })} 
             className="input input-bordered w-full max-w-xs"/> 
-            <label className="label">
-              <span className="label-text">Password</span>   
-            </label>
             {errors.password && <p className="text-red-600">{errors.password?.message}</p>}   
           </div>
-          <input className="btn btn-accent w-full" value='Login' type="submit" />
+          <input className="btn btn-accent w-full mt-3" value='Login' type="submit" />
           <div>
             { loginError && <p>{loginError}</p>}
           </div>
         </form>
-        <p>New to Doctors Portal <Link className="text-secondary" to="/signup">Create new Account</Link> </p>
+        <p>New to Laptops Resale Market <Link className="text-secondary" to="/signup">Create new Account</Link> </p>
         <div className="divider">OR</div>
         {/* <button className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button> */}
         <GoogleLogin></GoogleLogin>

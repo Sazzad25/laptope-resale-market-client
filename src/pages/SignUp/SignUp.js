@@ -118,22 +118,6 @@ const SignUp = () => {
               <p className="text-red-600">{errors.password?.message}</p>
             )}
           </div>
-          {/* <div className="dropdown">
-            <label tabIndex={0} className="btn m-1">
-              Chose Your Account
-            </label>
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a>Seller Account</a>
-              </li>
-              <li>
-                <a>User Account</a>
-              </li>
-            </ul>
-          </div> */}
           <div className="form-control w-full max-w-xs">
             <label className="label">
               <span className="label-text">Chose Your Account</span>
