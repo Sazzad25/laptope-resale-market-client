@@ -2,7 +2,7 @@ Website Name
 Laptops Resale Market
 
 Live Site Link
-Hosted in Firebase -> https://laptops-resale-market.web.app/dashboard/myproducts
+Hosted in Firebase -> https://laptops-resale-market.web.app
 
 Project Details
 A simple React app built with React, React Router Dom and Firebase.
