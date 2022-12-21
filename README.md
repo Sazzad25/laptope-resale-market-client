@@ -16,5 +16,5 @@ Hosted in Firebase -> https://laptops-resale-market.web.app
 * It is a Resale Market website. There are 2 ways to register on this website. These are: Email and Password and Google.
 
 # Admin
-Email: sazzad@gmail.com
-password: 123456
+* Email: sazzad@gmail.com
+* Password: 123456
