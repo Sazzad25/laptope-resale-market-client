@@ -8,13 +8,14 @@ import Payment from "../../Dashboard/Payment";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import Blog from "../../pages/Blog/Blog";
+import Category from "../../pages/Category/Category";
 import DisplayError from "../../pages/DisplayError/DisplayError";
+import Animation from "../../pages/Home/Animation/Animation";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
 import SignUp from "../../pages/SignUp/SignUp";
 import SingleCard from "../../pages/SingleCard/SingleCard";
-import AdminRoute from "../PrivateRoute/AdminRoute";
-import PrivateRoute from "../PrivateRoute/PrivateRoute";
+
 
 export const router = createBrowserRouter([
     {
@@ -43,8 +44,18 @@ export const router = createBrowserRouter([
             },
 
             {
+                path: '/range',
+                element: <Category></Category>
+            },
+
+            {
+                path: '/animation',
+                element: <Animation></Animation>
+            },
+
+            {
                 path: '/category',
-                element: <PrivateRoute><SingleCard></SingleCard></PrivateRoute>,
+                element: <SingleCard></SingleCard>,
                 loader: () => fetch('https://laptope-resale-market-server.vercel.app/product'),
             },
 
@@ -52,7 +63,7 @@ export const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        element: <DashboardLayout></DashboardLayout>,
         errorElement: <DisplayError></DisplayError>,
         children: [
             {
@@ -62,27 +73,27 @@ export const router = createBrowserRouter([
 
             {
                 path: '/dashboard/buyers',
-                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
+                element: <AllBuyers></AllBuyers>
             },
 
             {
                 path: '/dashboard/sellers',
-                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
+                element: <AllSellers></AllSellers>
             },
 
             {
                 path: '/dashboard/addproduct',
-                element: <AdminRoute><AddProduct></AddProduct></AdminRoute>
+                element: <AddProduct></AddProduct>
             },
 
             {
                 path: '/dashboard/myproducts',
-                element: <AdminRoute><MyProducts></MyProducts></AdminRoute>
+                element:<MyProducts></MyProducts>
             },
 
             {
                 path: '/dashboard/payment/:id',
-                element: <AdminRoute><Payment></Payment></AdminRoute>,
+                element: <Payment></Payment>,
                 loader: ({params}) => fetch(`https://laptope-resale-market-server.vercel.app/bookings/${params.id}`)
             }
         ]
